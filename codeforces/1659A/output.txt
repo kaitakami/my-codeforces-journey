@@ -1,0 +1,18 @@
+1 true 1
+Bigger
+2.5 false 3
+Bigger
+1.8571428571428572 false 2
+Bigger
+1 true 1
+Bigger
+1.2 false 1
+Smaller
+1 true 1
+Bigger
+4.5 false 5
+Bigger
+2.6666666666666665 false 3
+Bigger
+3 true 3
+Bigger
