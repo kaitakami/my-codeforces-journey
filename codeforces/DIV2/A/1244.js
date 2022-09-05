@@ -26,19 +26,15 @@ function readline() {
 }
 
 function main() {
-  const [N, M] = readline().split(" ").map(Number);
-  const arr = readline().split(" ").map(Number);
-  let actualValue = 0;
-  let maxValue = 0;
-  for (let i = 0; i <= N - M; i++) {
-    const subArray = arr.slice(i, i + M);
-    for (let i = 0; i < subArray.length; i++) {
-      actualValue += subArray[i] * (i + 1);
+  const T = readline();
+  for (let i = 0; i < T; i++) {
+    const [a, b, c, d, k] = readline().split(" ").map(Number);
+    const pensNeeded = Number.isInteger(a / c) ? a / c : ~~(a / c) + 1;
+    const pencilsNeeded = Number.isInteger(b / d) ? b / d : ~~(b / d) + 1;
+    if (pensNeeded + pencilsNeeded > k) {
+      console.log(-1);
+    } else {
+      console.log(`${pensNeeded}  ${pencilsNeeded}`);
     }
-    if (actualValue > maxValue) {
-      maxValue = actualValue;
-    }
-    actualValue = 0;
   }
-  console.log(maxValue);
 }
