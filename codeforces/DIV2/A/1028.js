@@ -27,33 +27,24 @@ function readline() {
 
 function main() {
   const [n, m] = readline().split(" ").map(Number);
-  let firstBColumn = null;
-  let columnCount = 0;
-  let columnAlreadyCounted = false;
   let firstBrow = null;
   let rowCount = 0;
+  let columnMid = null;
   for (let i = 0; i < n; i++) {
     const row = readline().split("");
+    let rowAlreadyCounted = false;
+
     for (let j = 0; j < m; j++) {
-      if (row[j] === "B" && firstBColumn === null) {
-        firstBrow = j + 1;
-        firstBColumn = i + 1;
+      if (row[j] === "B" && columnMid === null) {
+        firstBrow = i + 1;
+        columnMid =
+          Math.floor(row.filter((value) => value === "B").length / 2) + j + 1;
       }
-      if (row[j] === "B" && firstBColumn === i) rowCount++;
-      if (row[j] === "B" && !columnAlreadyCounted) {
-        columnCount++;
-        columnAlreadyCounted = true;
+      if (row[j] === "B" && !rowAlreadyCounted) {
+        rowCount++;
+        rowAlreadyCounted = true;
       }
     }
-    columnAlreadyCounted = false;
   }
-  if (rowCount === 1 && columnCount === 1) {
-    console.log(firstBColumn, firstBrow);
-    return;
-  }
-  console.log(
-    `${(firstBColumn + columnCount) / 2} ${
-      (firstBrow + rowCount + rowCount) / 2
-    }`
-  );
+  console.log(firstBrow + Math.floor(rowCount / 2), columnMid);
 }
